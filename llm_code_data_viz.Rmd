@@ -1,0 +1,127 @@
+```{r}
+library(tidyverse)
+library(scales)
+
+caption <- "Max Woolf — minimaxir.com"
+
+sessionInfo()
+```
+
+```{r}
+theme_set(theme_minimal(base_size = 8, base_family = "Overpass") +
+  theme(
+    plot.title = element_text(size = 8, face = "bold"),
+    plot.subtitle = element_text(color = "#666666", size = 6),
+    axis.title.x = element_text(size = 6),
+    axis.title.y = element_text(size = 6),
+    plot.caption = element_text(size = 5, color = "#969696"),
+    plot.background = element_rect(fill = "#FFFFFF", color = "#FFFFFF"),
+    legend.title = element_text(size = 8),
+    # legend.key.width = unit(0.25, unit = "cm"),
+    # panel.grid.minor = element_blank()
+  ))
+```
+
+
+```{r}
+df <- read_csv("benchmark_results.csv") %>%
+  mutate(
+    type = factor(type),
+    iteration = factor(iteration),
+    correct = factor(correct, levels = c("Correct", "Bugged"))
+  )
+
+
+initial <- df %>%
+  head(1) %>%
+  pull(avg_time_ms)
+
+df <- df %>% mutate(speedup = initial / avg_time_ms)
+
+df
+```
+
+
+
+
+```{r}
+colors <- c("Correct" = "#27ae60", "Bugged" = "#c0392b")
+
+x_labels <- function(x) {
+  paste0(x, "x")
+}
+
+plot <- ggplot(df, aes(x = speedup, y = iteration, fill = correct, color = correct)) +
+  geom_bar(stat = "identity") +
+  geom_text(aes(label = sprintf("%.1fx", speedup)), family = "Overpass", face = "bold", size = 2, nudge_x = 12) +
+  scale_x_continuous(limits = c(0, 120), labels = x_labels) +
+  scale_y_discrete(limits = rev) +
+  scale_fill_manual(values = colors) +
+  scale_color_manual(values = colors, guide = NULL) +
+  labs(
+    title = "Can LLMs write better code if\nyou keep asking them “write better code”?",
+    # subtitle = "Code generated via Claude 3.5 Sonnet.",
+    x = "Average Speedup Relative to Initial Casual LLM Output",
+    fill = "Implementation Correctness",
+    caption = caption
+  ) +
+  theme(
+    legend.position = "top",
+    legend.title = element_text(size = 6),
+    legend.text = element_text(size = 5, margin = margin(c(0.05, 0.0, 0.0, 0.0), unit = "cm")),
+    legend.key.width = unit(0.50, unit = "cm"),
+    legend.key.height = unit(0.25, unit = "cm"),
+    legend.margin = margin(c(0.0, 0.5, -0.2, 0.4), unit = "cm"),
+    axis.text.x = element_text(size = 5, angle = 90, vjust = 0.5),
+    axis.text.y = element_text(size = 5),
+    # axis.title.x = element_blank(),
+    axis.title.y = element_blank(),
+    axis.ticks = element_line(linewidth = 0.5, color = "#969696"),
+    panel.grid.major.y = element_blank(),
+    panel.grid.minor.x = element_blank(),
+    # axis.ticks.length.x = unit(., "cm"),
+    # axis.ticks.length.y = unit(.25, "cm"),
+  ) +
+  facet_wrap(~type, nrow = 1, scales = "free_y")
+
+ggsave("comparison.png", plot, width = 4, height = 2.5)
+```
+
+## Casual Use Only (for header image)
+
+```{r}
+plot <- ggplot(df %>% filter(type == "Casual Use"), aes(x = speedup, y = iteration, fill = correct, color = correct)) +
+  geom_bar(stat = "identity") +
+  geom_text(aes(label = sprintf("%.1fx", speedup)), family = "Overpass", face = "bold", size = 4, nudge_x = 12) +
+  scale_x_continuous(limits = c(0, 120), labels = x_labels) +
+  scale_y_discrete(limits = rev) +
+  scale_fill_manual(values = colors) +
+  scale_color_manual(values = colors, guide = NULL) +
+  labs(
+    title = "LLM Generated Code Runtime Speedup For Successive Generations",
+    # subtitle = "Code generated via Claude 3.5 Sonnet.",
+    x = "Average Speedup Relative to Initial Casual LLM Output",
+    fill = "Implementation Correctness",
+    caption = caption
+  ) +
+  theme(
+    legend.position = "top",
+    legend.title = element_text(size = 6),
+    legend.text = element_text(size = 5, margin = margin(c(0.05, 0.0, 0.0, 0.0), unit = "cm")),
+    legend.key.width = unit(0.50, unit = "cm"),
+    legend.key.height = unit(0.25, unit = "cm"),
+    legend.margin = margin(c(0.0, 0.5, -0.2, 0.4), unit = "cm"),
+    axis.text.x = element_text(size = 9, angle = 90, vjust = 0.5),
+    axis.text.y = element_text(size = 9),
+    # axis.title.x = element_blank(),
+    axis.title.y = element_blank(),
+    axis.ticks = element_line(linewidth = 0.5, color = "#969696"),
+    panel.grid.major.y = element_blank(),
+    panel.grid.minor.x = element_blank(),
+    # axis.ticks.length.x = unit(., "cm"),
+    # axis.ticks.length.y = unit(.25, "cm"),
+  ) +
+  # facet_wrap(~type, nrow = 1, scales = "free_y")
+
+ggsave("header.png", plot, width = 4, height = 3)
+```
