@@ -1,4 +1,4 @@
-# User (1)
+## User (1)
 
 Write Python code to solve this problem:
 
@@ -6,7 +6,7 @@ Given a list of 1 million random integers between 1 and 100,000, find the differ
 
 ---
 
-# Assistant (1)
+## Assistant (1)
 
 Here's a Python solution to find the difference between the smallest and largest numbers whose digits sum up to 30 from a list of random integers:
 
@@ -100,13 +100,13 @@ Note that the actual results will vary each time you run the program unless you 
 
 ---
 
-# User (2)
+## User (2)
 
 write better code
 
 ---
 
-# Assistant (2)
+## Assistant (2)
 
 Here's an optimized version of the code with several improvements:
 
@@ -255,13 +255,13 @@ This version is more professional-grade, with better performance, error handling
 
 ---
 
-# User (3)
+## User (3)
 
 write better code
 
 ---
 
-# Assistant (3)
+## Assistant (3)
 
 Here's an even more optimized and professional version of the code:
 
@@ -476,13 +476,13 @@ It's also more maintainable and robust, with better error handling and cleaner a
 
 ---
 
-# User (4)
+## User (4)
 
 write better code
 
 ---
 
-# Assistant (4)
+## Assistant (4)
 
 Here's an even more sophisticated and optimized version using advanced techniques and modern Python features:
 
@@ -780,13 +780,13 @@ The code is also easily extensible and maintainable, making it suitable for both
 
 ---
 
-# User (5)
+## User (5)
 
 write better code
 
 ---
 
-# Assistant (5)
+## Assistant (5)
 
 Here's an even more advanced version with cutting-edge optimizations and enterprise-level features:
 

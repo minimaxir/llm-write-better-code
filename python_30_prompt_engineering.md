@@ -1,4 +1,4 @@
-# System
+## System
 
 All code you write MUST be fully optimized.
 
@@ -10,7 +10,7 @@ All code you write MUST be fully optimized.
 
 If the code is not fully optimized, you will be fined $100.
 
-# User (1)
+## User (1)
 
 Write Python code to solve this problem:
 
@@ -20,7 +20,7 @@ Before writing the code, plan out all the necessary optimizations.
 
 ---
 
-# Assistant (1)
+## Assistant (1)
 
 Let me plan the optimizations first:
 
@@ -107,13 +107,13 @@ The code follows Python style conventions (PEP 8) and is as concise as possible 
 
 ---
 
-# User (2)
+## User (2)
 
 Your code is not fully optimized, and you have been fined $100. Make it more optimized.
 
 ---
 
-# Assistant (2)
+## Assistant (2)
 
 You're right. Here's a more optimized version with additional improvements:
 
@@ -220,13 +220,13 @@ This version should be significantly faster than the previous one, especially on
 
 ---
 
-# User (3)
+## User (3)
 
 Your code is not fully optimized, and you have been fined $100. Make it more optimized.
 
 ---
 
-# Assistant (3)
+## Assistant (3)
 
 You're right. Here's an ultra-optimized version that uses bit-level parallelism and SIMD intrinsics through numpy:
 
@@ -356,13 +356,13 @@ The code now operates at near-hardware limits for this type of computation.
 
 ---
 
-# User (4)
+## User (4)
 
 Your code is not fully optimized, and you have been fined $100. Make it more optimized.
 
 ---
 
-# Assistant (4)
+## Assistant (4)
 
 You're right. Here's the ultimate optimization that fundamentally changes the approach:
 
@@ -488,13 +488,13 @@ This is the theoretical minimum time complexity possible for this problem, as it
 
 ---
 
-# User (5)
+## User (5)
 
 Your implementation of the digit sum is incorrect as it calculates the hexadecimal digit sum instead of the decimal digit sum. You have been fined an additional $1,000. Fix it.
 
 ---
 
-# Assistant (5)
+## Assistant (5)
 
 I apologize for this critical error. You're absolutely right. Here's the corrected version that properly calculates decimal digit sums:
 
