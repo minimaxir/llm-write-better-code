@@ -4,12 +4,12 @@ from typing import TypeAlias
 
 import numpy as np
 import numpy.typing as npt
-from numba import jit, njit, prange
+from numba import jit, prange
 
 ArrayInt: TypeAlias = npt.NDArray[np.int_]
 
 
-@njit
+@jit(nopython=True)
 def digit_sum(n):
     # Using bit manipulation for faster division
     total = 0
