@@ -1,0 +1,11 @@
+type,iteration,avg_time_ms,correct
+Casual Use,Initial Ask,657,Correct
+Casual Use,Iteration #1,244,Correct
+Casual Use,Iteration #2,130,Bugged
+Casual Use,Iteration #3,160,Correct
+Casual Use,Iteration #4,6.59,Correct
+Prompt Engineering,Initial Ask,11.2,Correct
+Prompt Engineering,Iteration #1,72,Bugged
+Prompt Engineering,Iteration #2,10.1,Bugged
+Prompt Engineering,Iteration #3,6.59,Bugged
+Prompt Engineering,Iteration #4,6.89,Bugged
